@@ -17,11 +17,12 @@ def login():
             login_user(user,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
         flash('Invalid username or Password')
-    title = "watchlist login"
+    title = "Glam_bay login"
     return render_template('auth/login.html',login_form = login_form,title=title)
 
 
-    #register route
+
+#register route
 @auth.route('/register',methods = ["GET","POST"])
 def register():
     form = RegistrationForm()
@@ -33,6 +34,7 @@ def register():
         return redirect(url_for('auth.login'))
     title = "New Account"
     return render_template('auth/register.html',registration_form = form)
+
 
 #logout route
 @auth.route('/logout')
