@@ -71,6 +71,14 @@ class Blog(db.Model):
 
     def __repr__(self):
         return f'Blog {self.title}'
+# Quotes class
+class Quote:
+    """
+    Quotes is a  class for quotes consumed from API given
+    """
+    def __init__(self, author, quote):
+        self.author = author
+        self.quote = quote        
 
 # subscribers class
 class Subscriber(db.Model):
