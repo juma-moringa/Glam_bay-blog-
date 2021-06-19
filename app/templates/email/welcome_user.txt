@@ -1,6 +1,7 @@
 Hello {{user.username}}.
-Welcome to GlamBay
+Welcome to GlamBay.
 We have just seen you have signed up for our application and want to welcome you to the family.
+Thank you for subscribing to my blog.
 Please enjoy the reviews of all your  favourite Blogs.
 
 @GlamBay & jaycreations 2021.
