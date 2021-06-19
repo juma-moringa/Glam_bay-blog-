@@ -56,21 +56,27 @@ class Blog(db.Model):
 
     comment = db.relationship('Comment', backref='blog', lazy='dynamic')
 
-    def save(self):
+    def save_blog(self):
         db.session.add(self)
         db.session.commit()
 
-    def delete(self):
+    def delete_blog(self):
         db.session.delete(self)
         db.session.commit()
 
-    def get_blog(id):
-        blog = Blog.query.filter_by(id=id).first()
+    @classmethod
+    def get_user_blogs(cls,id):
+        posts = Blog.query.filter_by(user_id = id).order_by(Blog.posted.desc()).all()
+        return posts
 
-        return blog
+    @classmethod
+    def get_all_blogs(cls):
+        return Blog.query.order_by(Blog.posted).all()
 
-    def __repr__(self):
-        return f'Blog {self.title}'
+
+        # return blogs
+    # def __repr__(self):
+    #     return f'Blog {self.title}'
         
 # Quotes class
 class Quote:

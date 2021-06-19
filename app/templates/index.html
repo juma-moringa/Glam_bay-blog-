@@ -1,74 +1,19 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro%}
-<!DOCTYPE html>
-<html>
+{% block content %}
 
-<head>
-    <meta charset="utf-8">
-    {% if title %}
-    <title> {{ title }}</title>
-    {% else %}
-    <title> Welcome to the best Movie Review website </title>
-
-    {% endif %}
-
-</head>
-
-<body>
-    <!-- Styles block -->
-
-    {% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-    {% endblock %}
-
-    <!-- Content block -->
-    {% block content %}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
-    <div class="container" style="font-family: 'Kaushan Script', cursive;">
-        <div class="container" style="font-family: 'Kaushan Script', cursive;">
-            <form>
-                <input type="text" name="movie_query" placeholder="Search for a Movie" class="form-control"
-                    style="width: 5cm;">
-                <input type="submit" value="Submit" class="btn btn-default">
-            </form>
-
-        </div>
-        <div class="container">
-            <h1>Moviez trends</h1>
-            <p>Why is there so much month left at the end of the money? <br>It must be Thursday. I never could get the
-                hang
-                of Thursdays.</p>
-        </div>
-        <div class="container-fluid">
-
-            <!-- Now showing movie -->
-            <h3 style="text-align:center; color:blue">Now Showing</h3>
-            <ul>
-
-            </ul>
-
-            <!-- Upcoming movie  -->
-            <h3 style="text-align:center; color:blue"> Upcoming Movies </h3>
-            <ul>
-            
-            </ul>
-
-            <!-- Popular movie -->
-            <h2 style="text-align:center; color:blue"> Popular Movies</h2>
-
-            </ul>
-
-            {% endblock%}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="heading">
+                    <span class="subheading"><i class="fas fa-quote-left"></i> <em>{{quote.quote}}</em> <i
+                            class="fas fa-quote-right"></i></span>
+                    <h2>{{quote.author}}</h2>
+                </div>
+            </div>
         </div>
     </div>
-</body>
-<footer>
-    <div style="text-align:center;">
-        <h1>@jaycreations</h1>
-    </div>
-</footer>
 
 
-</html>
+<!-- Main Content -->
+
+{%endblock%}
