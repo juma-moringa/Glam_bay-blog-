@@ -19,12 +19,12 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
-    # role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
 
-    # reviews = db.relationship('Review',backref = 'user',lazy = "dynamic")
+    blog = db.relationship('Blog', backref='user', lazy='dynamic')
+    comment = db.relationship('Comment', backref='user', lazy='dynamic')
 
     @property
     def password(self):
@@ -53,6 +53,7 @@ class Blog(db.Model):
     content = db.Column(db.Text(),nullable=False)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
     comment = db.relationship('Comment', backref='blog', lazy='dynamic')
 
     def save(self):
