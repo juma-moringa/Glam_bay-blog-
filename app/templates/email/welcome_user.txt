@@ -1,6 +1,6 @@
 Hello {{user.username}}.
-Welcome to Movie Trendz
+Welcome to GlamBay
 We have just seen you have signed up for our application and want to welcome you to the family.
-Please enjoy the reviews of all your  favourite films.
+Please enjoy the reviews of all your  favourite Blogs.
 
-@Movie-Trendz & jaycreations 2021.
+@GlamBay & jaycreations 2021.
