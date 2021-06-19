@@ -6,7 +6,7 @@ from flask_login import login_required, current_user
 from datetime import datetime
 from ..requests import get_quote
 from ..email import mail_message
-from .forms import CommentsForm
+from .forms import CommentsForm, UpdateBlogForm
 
 
 @main.route("/", methods = ["GET", "POST"])
@@ -42,3 +42,23 @@ def Create_blog(id):
         return redirect(url_for("main.post", id = blog.id))
 
     return render_template("new_blog.html",blog = blog, comments = comments, comment_form = comment_form, comment_count = comment_count)
+
+
+
+@main.route("/post/<int:id>/update", methods = ["POST", "GET"])
+@login_required
+def edit_blog(id):
+    blog = Blog.query.filter_by(id = id).first()
+    edit_form = UpdateBlogForm()
+
+    if edit_form.validate_on_submit():
+        blog.title = edit_form.title.data
+        edit_form.title.data = ""
+        blog.content = edit_form.blog.data
+        edit_form.blog.data = ""
+
+        db.session.add(blog)
+        db.session.commit()
+        return redirect(url_for("main.post", id = blog.id))
+
+    return render_template("edit_post.html",blog = blog,edit_form = edit_form)
