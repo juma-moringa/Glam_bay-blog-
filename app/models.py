@@ -40,3 +40,33 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+
+class Blog(db.Model):
+    '''
+    Blog class to define blog Objects
+    '''
+    __tablename__ = 'blogs'
+    id = db.Column(db.Integer,primary_key=True)
+    title = db.Column(db.String(255),nullable=False)
+    content = db.Column(db.Text(),nullable=False)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comment = db.relationship('Comment', backref='blog', lazy='dynamic')
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def get_blog(id):
+        blog = Blog.query.filter_by(id=id).first()
+
+        return blog
+
+    def __repr__(self):
+        return f'Blog {self.title}'
+
