@@ -1,21 +1,21 @@
 from flask_wtf import FlaskForm
-from wtforms import (StringField, TextAreaField,
-                    SubmitField, SelectField)
+from wtforms import StringField, TextAreaField, SubmitField, SelectField
 from wtforms.validators import Required
 
 
 # user profile form
 class UserProfile(FlaskForm):
-    first_name = StringField("First name...")
+    first_name = StringField("Username")
     email = StringField(" Your Email")
-    last_name = StringField("Last Name...")
     bio = TextAreaField("Bio")
     submit = SubmitField("Update")
+
 # blog form
 class BlogForm(FlaskForm):
     title = StringField("Blog title:", validators=[Required()])
     post = TextAreaField("Type Away:", validators=[Required()])
     submit = SubmitField("Post")
+
 #comments form
 class CommentsForm(FlaskForm):
     comment = TextAreaField("Post Comment", validators=[Required()])

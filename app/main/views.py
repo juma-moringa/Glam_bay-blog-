@@ -1,4 +1,4 @@
-from flask import (render_template, request, redirect, url_for)
+from flask import render_template, request, redirect, url_for
 from . import main
 from .. import db
 from ..models import User, Comment, Blog, Subscriber
@@ -24,7 +24,7 @@ def index():
 
 
 @main.route("/post/<int:id>", methods = ["POST", "GET"])
-def Update_blog(id):
+def Create_blog(id):
     blog = Blog.query.filter_by(id = id).first()
     comments = Comment.query.filter_by(post_id = id).all()
     comment_form = CommentsForm()
