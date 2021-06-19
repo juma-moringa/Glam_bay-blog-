@@ -13,7 +13,7 @@ class UserProfile(FlaskForm):
 # blog form
 class BlogForm(FlaskForm):
     title = StringField("Blog title:", validators=[Required()])
-    post = TextAreaField("Type Away:", validators=[Required()])
+    blog = TextAreaField("Type Away:", validators=[Required()])
     submit = SubmitField("Post")
 
 #comments form
