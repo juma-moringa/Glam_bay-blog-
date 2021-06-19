@@ -71,6 +71,7 @@ class Blog(db.Model):
 
     def __repr__(self):
         return f'Blog {self.title}'
+        
 # Quotes class
 class Quote:
     """
