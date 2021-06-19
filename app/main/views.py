@@ -15,15 +15,16 @@ def index():
     quote = get_quote()
 
     if request.method == "POST":
-        new_sub = Subscriber(email = request.form.get("subscriber"))
-        db.session.add(new_sub)
+        new_subs = Subscriber(email = request.form.get("subscriber"))
+
+        db.session.add(new_subs)
         db.session.commit()
-        mail_message("Thank you for subscribing to Glam-bay blogs","email/welcome", new_sub.email)
+        mail_message("Thank you for subscribing to Glam-bay blogs","email/welcome", new_subs.email)
 
     return render_template("index.html",blogs = blogs,quote = quote)
 
 
-@main.route("/post/<int:id>", methods = ["POST", "GET"])
+@main.route("/blog/<int:id>", methods = ["POST", "GET"])
 def Create_blog(id):
     blog = Blog.query.filter_by(id = id).first()
     comments = Comment.query.filter_by(post_id = id).all()
@@ -39,13 +40,13 @@ def Create_blog(id):
             comment_name = current_user.username
         new_comment = Comment(comment = comment,posted= datetime.now(),comment_by = comment_name,id = id)
         new_comment.save_comment()
-        return redirect(url_for("main.post", id = blog.id))
+        return redirect(url_for("main.blog", id = blog.id))
 
     return render_template("new_blog.html",blog = blog, comments = comments, comment_form = comment_form, comment_count = comment_count)
 
 
 
-@main.route("/post/<int:id>/update", methods = ["POST", "GET"])
+@main.route("/blog/<int:id>/update", methods = ["POST", "GET"])
 @login_required
 def edit_blog(id):
     blog = Blog.query.filter_by(id = id).first()
@@ -59,6 +60,6 @@ def edit_blog(id):
 
         db.session.add(blog)
         db.session.commit()
-        return redirect(url_for("main.post", id = blog.id))
+        return redirect(url_for("main.blog", id = blog.id))
 
-    return render_template("edit_post.html",blog = blog,edit_form = edit_form)
+    return render_template("edit_blog.html",blog = blog,edit_form = edit_form)
