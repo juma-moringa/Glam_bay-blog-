@@ -3,10 +3,11 @@ from . import main
 from .. import db
 from ..models import User, Comment, Blog, Subscriber
 from flask_login import login_required, current_user
-
 from datetime import datetime
 from ..requests import get_quote
 from ..email import mail_message
+from .forms import CommentsForm
+
 
 @main.route("/", methods = ["GET", "POST"])
 def index():
@@ -22,22 +23,22 @@ def index():
     return render_template("index.html",blogs = blogs,quote = quote)
 
 
-# @main.route("/post/<int:id>", methods = ["POST", "GET"])
-# def Update_blog(id):
-#     post = Blog.query.filter_by(id = id).first()
-#     comments = Comment.query.filter_by(post_id = id).all()
-#     comment_form = CommentForm()
-#     comment_count = len(comments)
+@main.route("/post/<int:id>", methods = ["POST", "GET"])
+def Update_blog(id):
+    blog = Blog.query.filter_by(id = id).first()
+    comments = Comment.query.filter_by(post_id = id).all()
+    comment_form = CommentsForm()
+    comment_count = len(comments)
 
-#     if comment_form.validate_on_submit():
-#         comment = comment_form.comment.data
-#         comment_form.comment.data = ""
-#         comment_alias = comment_form.alias.data
-#         comment_form.alias.data = ""
-#         if current_user.is_authenticated:
-#             comment_alias = current_user.username
-#         new_comment = Comment(comment = comment,comment_at = datetime.now(),comment_by = comment_alias,post_id = id)
-#         new_comment.save_comment()
-#         return redirect(url_for("main.post", id = post.id))
+    if comment_form.validate_on_submit():
+        comment = comment_form.comment.data
+        comment_form.comment.data = ""
+        comment_name = comment_form.name.data
+        comment_form.name.data = ""
+        if current_user.is_authenticated:
+            comment_name = current_user.username
+        new_comment = Comment(comment = comment,posted= datetime.now(),comment_by = comment_name,id = id)
+        new_comment.save_comment()
+        return redirect(url_for("main.post", id = blog.id))
 
-#     return render_template("post.html",post = post, comments = comments, comment_form = comment_form, comment_count = comment_count)
+    return render_template("new_blog.html",blog = blog, comments = comments, comment_form = comment_form, comment_count = comment_count)
