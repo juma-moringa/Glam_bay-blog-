@@ -8,7 +8,7 @@ from . import login_manager
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-
+# user class
 class User(UserMixin,db.Model):
 
     '''
@@ -41,12 +41,13 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-
+# blog class
 class Blog(db.Model):
     '''
     Blog class to define blog Objects
     '''
     __tablename__ = 'blogs'
+
     id = db.Column(db.Integer,primary_key=True)
     title = db.Column(db.String(255),nullable=False)
     content = db.Column(db.Text(),nullable=False)
@@ -70,3 +71,22 @@ class Blog(db.Model):
     def __repr__(self):
         return f'Blog {self.title}'
 
+# subscribers class
+class Subscriber(db.Model):
+    '''
+    Subscribers class to define subscriber Objects
+    '''
+
+
+    __tablename__='subscribers'
+
+
+    id=db.Column(db.Integer,primary_key=True)
+    email = db.Column(db.String(255),unique=True,index=True)
+
+    def save_subscriber(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f'Subscriber {self.email}'
