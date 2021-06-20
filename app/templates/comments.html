@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 ">
+            <h3 class="mt-3 pb-3 text-center">Blog</h3>
+            {{blog.title}}
+            <hr>
+            {%for blog in blogs%}
+            <p class="text-default">{{blog.title_blog}}</p>
+            <p>{{blog.description}}</p>
+            <p class="text-danger">By: {{blog.user.username}}</p>
+            {%endfor%}
+        </div>
+        <div class="col-md-4 ">
+            <h3 class="mt-3 pb-3 text-center">Comment</h3>
+            <hr>
+            {{wtf.quick_form(comment_form)}}
+
+        </div>
+        <div class="col-md-4 ">
+            <h3 class="mt-3 pb-3 text-center">Comments</h3>
+            <hr>
+            {%for comment in blog_comments%}
+            <p>{{comment.comment}}</p>
+            <p>{{comment.posted.strftime("%Y-%m-%d")}}</p>
+            <p> By: {{comment.user.username}}</p>
+
+            <a href="{{url_for('main.deleteComment',id = comment.id)}}"><i
+                    class="fas fa-trash text-danger"></i>DELETE</a>
+
+            <hr>
+
+            {%endfor%}
+        </div>
+    </div>
+</div>
+
+{% endblock%}

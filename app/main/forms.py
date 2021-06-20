@@ -13,13 +13,13 @@ class UserProfile(FlaskForm):
 # blog form
 class BlogForm(FlaskForm):
     title = StringField("Blog title:", validators=[Required()])
-    blog = TextAreaField("Type Away:", validators=[Required()])
-    submit = SubmitField("Post")
+    blog = TextAreaField("Write your blog:", validators=[Required()])
+    submit = SubmitField("Blog")
 
 #comments form
-class CommentsForm(FlaskForm):
-    comment = TextAreaField("Post Comment", validators=[Required()])
-    name = StringField("Comment Name")
+class CommentForm(FlaskForm):   
+    name = StringField("Blog name")
+    comment = TextAreaField(" Your Comment..", validators=[Required()])
     submit = SubmitField("Comment")
 
 #update blogs form

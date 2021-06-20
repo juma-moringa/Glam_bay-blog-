@@ -51,6 +51,7 @@ class Blog(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     title = db.Column(db.String(255),nullable=False)
     content = db.Column(db.Text(),nullable=False)
+    blog_by = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
@@ -121,7 +122,7 @@ class Comment(db.Model):
     blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
-    def save(self):
+    def save_comment(self):
         db.session.add(self)
         db.session.commit()
 

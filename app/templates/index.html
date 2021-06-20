@@ -1,19 +1,56 @@
 {% extends 'base.html'%}
 {% block content %}
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="heading">
-                    <span class="subheading"><i class="fas fa-quote-left"></i> <em>{{quote.quote}}</em> <i
-                            class="fas fa-quote-right"></i></span>
-                    <h2>{{quote.author}}</h2>
-                </div>
-            </div>
+<div class="container" style='text-align:center;'>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="heading">
+          <span class="subheading"><em>{{quote.quote}}</em></span>
+          <h4>{{quote.author}}</h4>
         </div>
+      </div>
     </div>
-
+  </div>
+</div>
 
 <!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-4 mx-auto">
+      {%for blog in blogs[::-1]%}
+      <div class="post-preview">
+        <a href="{{url_for('main.update_aBlog', id = blog.id)}}">
+          <h3 class="post-title">
+            {{blog.title}}
+          </h3>
+          <h3 class="post-subtitle">
+            {{blog.content | truncate (100) | safe}}
+          </h3>
+        </a>
+        <p class="post-meta">Posted by
+          <a href="{{url_for('main.update_profile', id = blog.user_id)}}">{{blog.posted}}</a> on
+          {{blog.posted.strftime('%B %d, %Y')}}
+        </p>
+      </div>
 
+
+
+
+      <a href="{{url_for('main.CommentBlog', id = blog.id)}}" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span> Comment
+
+      </a>
+
+      <a href="{{url_for('main.update_aBlog', id=blog.id)}}" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span> Update blog
+      </a>
+      <a href="{{url_for('main.delete_blog',id = blog.id)}}">
+        <span class="glyphicon glyphicon-trash"></span>
+      </a>
+      <hr>
+      {%endfor%}
+    </div>
+  </div>
+</div>
 {%endblock%}
