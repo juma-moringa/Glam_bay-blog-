@@ -15,28 +15,26 @@
 </div>
 
 <!-- Main Content -->
-<div class="container">
+<div class="container" style="text-decoration: none;">
   <div class="row">
-    <div class="col-lg-8 col-md-4 mx-auto">
+    <div class="col-sm-7 ">
       {%for blog in blogs[::-1]%}
-      <div class="post-preview">
-        <a href="{{url_for('main.update_aBlog', id = blog.id)}}">
-          <h3 class="post-title">
+      <div class="post-preview" style="text-decoration: none;">
+        <div class="panel panel-default">
+        <h2 href="{{url_for('main.update_aBlog', id = blog.id)}}">
+          <h3 div class="panel-body"class="panel panel-primary" style="text-decoration: none;">
             {{blog.title}}
           </h3>
-          <h3 class="post-subtitle">
-            {{blog.content | truncate (100) | safe}}
+          <h3 class="">
+            {{blog.content | truncate (100)}}
           </h3>
-        </a>
+        </h2>
         <p class="post-meta">Posted by
-          <a href="{{url_for('main.update_profile', id = blog.user_id)}}">{{blog.posted}}</a> on
+          <a href="{{url_for('main.update_profile', id = blog.user_id)}}">{{blog.user.username}}</a> on
           {{blog.posted.strftime('%B %d, %Y')}}
         </p>
       </div>
-
-
-
-
+      </div>
       <a href="{{url_for('main.CommentBlog', id = blog.id)}}" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-pencil"></span> Comment
 

@@ -147,7 +147,7 @@ def update_profile(id):
 
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for("main.profile", id = id))
+        # return redirect(url_for("main.profile", id = id))
     
     return render_template("profile/update.html",
                             user = user,
