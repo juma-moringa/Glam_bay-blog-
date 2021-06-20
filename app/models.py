@@ -82,7 +82,7 @@ class Blog(db.Model):
 # Quotes class
 class Quote:
     """
-    Quotes is a  class for quotes consumed from API given
+    Quotes is a  class for quotes  from API given
     """
     def __init__(self, author, quote):
         self.author = author
