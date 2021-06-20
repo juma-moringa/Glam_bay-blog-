@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% block content %}
-
+<!-- quote display -->
 <div class="container" style='text-align:center;'>
   <div class="container-fluid">
     <div class="row">
@@ -13,33 +13,30 @@
     </div>
   </div>
 </div>
-
-<!-- Main Content -->
+<!--  blog Content section -->
 <div class="container" style="text-decoration: none;">
   <div class="row">
     <div class="col-sm-7 ">
       {%for blog in blogs[::-1]%}
       <div class="post-preview" style="text-decoration: none;">
-        <div class="panel panel-default">
-        <h2 href="{{url_for('main.update_aBlog', id = blog.id)}}">
-          <h3 div class="panel-body"class="panel panel-primary" style="text-decoration: none;">
-            {{blog.title}}
-          </h3>
-          <h3 class="">
-            {{blog.content | truncate (100)}}
-          </h3>
-        </h2>
-        <p class="post-meta">Posted by
-          <a href="{{url_for('main.update_profile', id = blog.user_id)}}">{{blog.user.username}}</a> on
-          {{blog.posted.strftime('%B %d, %Y')}}
-        </p>
-      </div>
+        <div class="panel panel-primary" style="text-align:center;">
+          <h2 href="{{url_for('main.update_aBlog', id = blog.id)}}">
+            <h3 class="panel panel-default"  style="text-decoration: none;">
+              {{blog.title}}
+            </h3>
+            <h3 class="">
+              {{blog.content | truncate (300)}}
+            </h3>
+          </h2>
+          <p class="post-meta">Posted by:
+            <a href="{{url_for('main.update_profile', id = blog.user_id)}}">{{blog.user.username}}</a> on
+            {{blog.posted.strftime('%B %d, %Y')}}
+          </p>
+        </div>
       </div>
       <a href="{{url_for('main.CommentBlog', id = blog.id)}}" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-pencil"></span> Comment
-
       </a>
-
       <a href="{{url_for('main.update_aBlog', id=blog.id)}}" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-pencil"></span> Update blog
       </a>
