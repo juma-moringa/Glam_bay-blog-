@@ -51,6 +51,7 @@ def new_blog():
 
 # 3 Comment on a blog
 @main.route("/blog/<int:id>", methods=["POST", "GET"])
+@login_required
 def CommentBlog(id):
     blog = Blog.query.filter_by(id = id).all()
     blogComments = Comment.query.filter_by(blog_id=id).all()
