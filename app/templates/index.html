@@ -4,13 +4,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Economica:ital@1&display=swap" rel="stylesheet">
 <div class="container" style="font-family: 'Economica', sans-serif; text-align:center; font-size: 1.5em;" >
-  <div class="container-fluid"style="background-image:url('https://images.unsplash.com/photo-1532012197267-da84d127e765?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80')">
+  <div class="container-fluid"style="">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="heading">
           <h1 style="color: rgb(176, 133, 216) ; text-align:center;">Welcome to glambay home of blogs</h1>
-          <span class="subheading"><em>{{quote.quote}}</em></span>
-          <h4>{{quote.author}}</h4>
+          <span class="subheading"style="color:"><em>{{quote.quote}}</em></span>
+          <h4 >{{quote.author}}</h4>
         </div>
       </div>
     </div>
@@ -37,12 +37,15 @@
           </p>
         </div> 
       </div>
-      <a  style="font-size: 15px;"href="{{url_for('main.CommentBlog', id = blog.id)}}" type="button" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-pencil"></span> Comment
-      </a>
+      <!-- update button -->
       <a style="font-size: 15px;" href="{{url_for('main.update_aBlog', id=blog.id)}}" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-pencil"></span> Update blog
       </a>
+      <!-- comment button -->
+      <a  style="font-size: 15px;"href="{{url_for('main.CommentBlog', id = blog.id)}}" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span> Comment
+      </a>
+      <!-- delete button -->
       <a style="font-size: 20px;"href="{{url_for('main.delete_blog',id = blog.id)}}">
         <span class="glyphicon glyphicon-trash"></span>
       </a>

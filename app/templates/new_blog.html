@@ -1,32 +1,15 @@
-<!-- 
-    <div class="container" style=";" >
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <h3>Create a new blog </h3>
-                <form method="post">
-                    {{blog_form.hidden_tag()}}
-                    {{blog_form.title.label}} {{blog_form.title(class = "form-control")}}
-                    <br>
-                    {{blog_form.blog.label}} {{blog_form.blog(id="")}}
-                    <br>
-                    {{blog_form.submit(class = "btn btn-primary")}}
-                </form>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
-    </div> -->
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
 
 {% block content %}
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Economica:ital@1&display=swap" rel="stylesheet">
-<div class="container" style="font-size: 20px; font-family: 'Economica', sans-serif; padding-top: 40px;">
+<div class="container"
+    style="font-size: 20px; font-family: 'Economica', sans-serif; padding-top: 40px; background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');">
     <div class="row">
         <div class="col-md-2"> </div>
         <div class="col-md-8 mt-3 p-5 card">
-            <h3 class="mt-3 pb-3 text-center">New Blog</h3>
+            <h3 class="mt-3 pb-3 text-center"style="color:blueviolet;">New Blog</h3>
             <hr>
             {{wtf.quick_form(blog_form)}}
 
