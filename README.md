@@ -44,7 +44,7 @@ $ ./start.sh
 
 ### Live Site
 
-View [live]().
+View [live](https://glamblogs.herokuapp.com/).
 
 ## Enjoy :)
 
