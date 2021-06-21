@@ -14,11 +14,11 @@
   </div>
 </div>
 <!--  blog Content section -->
-<div class="container" style="text-decoration: none;">
+<div class="container-fluid" style="text-align: center;">
   <div class="row">
     <div class="col-sm-7 ">
       {%for blog in blogs[::-1]%}
-      <div class="post-preview" style="text-decoration: none;">
+      <div  style="text-decoration: none;">
         <div class="panel panel-primary" style="text-align:center;">
           <h2 href="{{url_for('main.update_aBlog', id = blog.id)}}">
             <h3 class="panel panel-default"  style="text-decoration: none;">
