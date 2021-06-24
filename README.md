@@ -21,7 +21,7 @@ You need the following before you start working on this project locally ;
 ## Project SetUp
 
 1. Git clone using this link:(https://github.com/juma-moringa/Glam_bay-blog-.git)
-2. Naviagate to the folder(GLAM_BAY(BLOG)) using the terminal. (*** cd GLAM_BAY(BLOG) *** )
+2. Naviagate to the folder(GLAM_BAY(BLOG)) using the terminal. ( cd GLAM_BAY(BLOG))
 3. pip install -r requirements.txt -This command will install all the extensions(dependancies) needed to run the application.
 4. Open it in your text editor.
 
