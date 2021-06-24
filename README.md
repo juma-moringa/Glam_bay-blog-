@@ -15,13 +15,13 @@ You need the following before you start working on this project locally ;
 1. Python version 3.8
 2. Flask
 3. Pip
-4. Virtual Environment(venv)- which is activated by typing the following command on your terminal :( source/bin/activate)
+4. Virtual Environment(venv)- which is installed by : ***python3 -m venv Virtual*** and activated by typing the following command on your terminal :( ***source/bin/activate***)
 5. A text editor
 
 ## Project SetUp
 
 1. Git clone using this link:(https://github.com/juma-moringa/Glam_bay-blog-.git)
-2. Naviagate to the folder(GLAM_BAY(BLOG)) using the terminal. ( cd GLAM_BAY(BLOG) )
+2. Naviagate to the folder(GLAM_BAY(BLOG)) using the terminal. (*** cd GLAM_BAY(BLOG ***) )
 3. pip install -r requirements.txt -This command will install all the extensions(dependancies) needed to run the application.
 4. Open it in your text editor.
 
@@ -29,9 +29,9 @@ You need the following before you start working on this project locally ;
 
 In your terminal, run the following commands;
 
-$ chmod a+x start.sh
+$ ***chmod a+x start.sh***
 
-$ ./start.sh
+$ ***./start.sh***
 
 ## Technologies Used
 
@@ -48,7 +48,7 @@ View [live](https://glamblogs.herokuapp.com/).
 
 ## Enjoy :)
 
-@jaycreations-2021
+**@jaycreations-2021**
 
 ### Licence
 
